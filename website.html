@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ian Theodore Jesalva | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      background: #f5f8fa;
+      margin: 0; padding: 0;
+    }
+    header {
+      height: 100vh;
+      background: linear-gradient(135deg, #05A63A 0%, #2BC568 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.25rem;
+      margin: 1rem 0 2rem;
+    }
+    .btn-primary {
+      background: white;
+      color: #05A63A;
+      border: 0;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 51, 102, 0.75);
+      padding: 0.5rem 0;
+      z-index: 100;
+    }
+    nav a {
+      margin: 0 1.5rem;
+      color: white; text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #2BC568;
+    }
+    section {
+      padding: 4rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .tabs {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .tabs button {
+      background: #e0e0e0;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin: 0 0.5rem;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .tabs button.active {
+      background: #05A63A;
+      color: white;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card h4 {
+      margin: 0;
+      padding: 1rem 1rem 0;
+      font-size: 1.25rem;
+      color: #004080;
+    }
+    .card p {
+      padding: 0 1rem 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: left;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header id="home">
+    <h1>Ian Theodore Jesalva</h1>
+    <p>Engineer • Inventor • Researcher</p>
+    <button class="btn-primary" onclick="document.getElementById('portfolio').scrollIntoView({ behavior:'smooth' })">
+      View Projects
+    </button>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Ian Theodore Jesalva, a passionate inventor and researcher with a focus on embedded systems, IoT, and environmental technology. I create innovative solutions to real-world problems using Arduino, ESP32, GSM, and more.</p>
+  </section>
+
+  <section id="portfolio">
+    <h2>My Projects</h2>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="filterProjects('awarded')">🏆 Awarded & Defended</button>
+      <button class="tab-btn" onclick="filterProjects('completed')">✅ Completed</button>
+    </div>
+
+    <div id="awarded" class="projects-grid">
+      <div class="card" onclick="showDetails('GSM Based Emergency Kit','LCD + 3 buttons to send GSM emergency alerts & make calls. 🏆 Regional Competition Champion.')">
+        
+        <h4>GSM Based Emergency Kit</h4>
+        <p>Emergency system using GSM + buttons.</p>
+      </div>
+      <div class="card" onclick="showDetails('Solar Microplastic Collector','Uses water pumps and solar power to collect microplastics. 🥇 Best in Research Paper, Oral Presentation, and Overall 1st Place.')">
+                <h4>Solar Microplastic Collector</h4>
+        <p>Eco robot with solar & pumps.</p>
+      </div>
+      <div class="card" onclick="showDetails('Cane for the Blind','Arduino-powered smart cane with schematic and 3D model. 🥇 Best in Paper.')">
+                <h4>Cane for the Blind</h4>
+        <p>Assistive device for blind navigation.</p>
+      </div>
+      <div class="card" onclick="showDetails('Coffee Bean Storage','ESP32 + sensors monitor coffee bean storage. 📘 Thesis Defended & Bookbound.')">
+        
+        <h4>Coffee Bean Storage</h4>
+        <p>Smart environment monitoring system.</p>
+      </div>
+      <div class="card" onclick="showDetails('Water Hyacinth Harvester','Installable conveyor machine for boats. 🏅 Best in Thesis.')">
+        
+        <h4>Water Hyacinth Harvester</h4>
+        <p>Environmental cleanup machine.</p>
+      </div>
+    </div>
+
+    <div id="completed" class="projects-grid" style="display: none;">
+  <div class="card" onclick="showDetails('Posture Tracking Device', 'A Wemos ESP8266 based system designed to track back posture and give alerts when posture is incorrect.')">
+    
+    <h4>Posture Tracking Device</h4>
+    <p>Back posture correction system.</p>
+  </div>
+  <div class="card" onclick="showDetails('IoT Fish Feeder', 'An ESP32-controlled automatic fish feeder that dispenses food based on schedule and can be remotely monitored.')">
+    
+    <h4>IoT Fish Feeder</h4>
+    <p>Automated fish feeding system.</p>
+  </div>
+  <div class="card" onclick="showDetails('Farm System with Image Classification', 'Uses Arduino and camera classification to identify crop health and manage irrigation.')">
+    
+    <h4>Farm System (Image Classification)</h4>
+    <p>Crop health and irrigation tool.</p>
+  </div>
+  <div class="card" onclick="showDetails('Flood Monitoring System', 'A GSM and Arduino-based system that sends flood alerts via SMS during rising water levels.')">
+    
+    <h4>Flood Monitoring System</h4>
+    <p>Flood alert with GSM messaging.</p>
+  </div>
+  <div class="card" onclick="showDetails('Vitals Monitoring with Datalogger', 'Arduino-powered system that logs and monitors heart rate, temperature, and other vitals.')">
+    
+    <h4>Vitals Monitoring System</h4>
+    <p>Health monitoring + datalogging.</p>
+  </div>
+  <div class="card" onclick="showDetails('Medical Waste Collector Robot', 'Wheeled robot with ESP32-CAM for navigation and medical waste pickup in controlled environments.')">
+    
+    <h4>Medical Waste Collector Robot</h4>
+    <p>ESP32-CAM mobile robot.</p>
+  </div>
+  <div class="card" onclick="showDetails('Robot with MPU6050', 'Wheeled robot with balance/stability feedback using MPU6050 gyroscope.')">
+    
+    <h4>MPU6050 Stability Robot</h4>
+    <p>Self-balancing robot.</p>
+  </div>
+  <div class="card" onclick="showDetails('Soft Robot Pump Control', 'A pneumatic soft robot controlled by Arduino for assisting persons with motor impairments.')">
+    
+    <h4>Soft Robot Pump Control</h4>
+    <p>Pneumatic grip assist robot.</p>
+  </div>
+</div>
+
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:ian@example.com">ian@example.com</a></p>
+    <p>LinkedIn: <a href="#">linkedin.com/in/ianjesalva</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ian Theodore Jesalva</p>
+  </footer>
+
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    function showDetails(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDescription').innerText = description;
+      document.getElementById('projectModal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove('show');
+    }
+
+    function filterProjects(type) {
+      document.getElementById('awarded').style.display = type === 'awarded' ? 'grid' : 'none';
+      document.getElementById('completed').style.display = type === 'completed' ? 'grid' : 'none';
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (type === 'awarded') buttons[0].classList.add('active');
+      else buttons[1].classList.add('active');
+    }
+
+    window.onload = () => {
+      closeModal();
+      window.addEventListener('click', function(event) {
+        const modal = document.getElementById('projectModal');
+        if (event.target === modal) closeModal();
+      });
+    }
+  </script>
+</body>
+</html>
