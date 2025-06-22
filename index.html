@@ -14,7 +14,7 @@
       margin: 0; padding: 0;
     }
     header {
-      height: 100vh;
+      height: 50vh;
       background: linear-gradient(135deg, #05A63A 0%, #2BC568 100%);
       display: flex;
       flex-direction: column;
@@ -64,7 +64,7 @@
       color: #2BC568;
     }
     section {
-      padding: 4rem 1rem;
+      padding: 2rem 1rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -163,6 +163,101 @@
       object-fit: cover;
       background-color: #ddd;
     }
+    #certificates {
+  padding: 4rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#certificates h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #004080;
+}
+
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f4f8 100%);
+  padding: 1.2rem 1.5rem;
+  border-left: 5px solid #05A63A;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.cert-item:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+.cert-info {
+  max-width: 80%;
+}
+
+.cert-info strong {
+  font-size: 1.1rem;
+  color: #004080;
+}
+
+.cert-info p {
+  margin: 0.3rem 0 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.cert-item a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #05A63A;
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.cert-item a:hover {
+  background: #04852e;
+}
+.cert-item:nth-child(even) {
+  background: linear-gradient(135deg, #eef3f8 0%, #e4ebf1 100%);
+}
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.grad-pic {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #05A63A;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+#graduate {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.grad-highlight {
+  width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
       </style>
 </head>
 <body>
@@ -181,10 +276,13 @@
     </button>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm Ian Theodore Jesalva, a passionate inventor and researcher with a focus on embedded systems, IoT, and environmental technology. I create innovative solutions to real-world problems using Arduino, ESP32, GSM, and more.</p>
-  </section>
+  <section id="graduate">
+  <h2>🎓 About Me</h2>
+  <img src="images/grad-pic.jpg" alt="Graduation Photo" class="grad-highlight">
+  <p style="text-align: center; max-width: 600px; margin: 1rem auto;">
+    I am a graduate with a degree of <strong>Bachelor of Engineering Technology Major in Electromechanical Technology</strong> from <strong>Technological University of the Philippines Taguig Campus</strong>, where I honed my skills in research, embedded systems, and innovation. This moment marks a milestone in my journey as a developer and inventor.
+  </p>
+</section>
 
   <section id="portfolio">
     <h2>My Projects</h2>
@@ -226,7 +324,7 @@
 </div>
 
 
-    <div id="completed" class="projects-grid" style="display: none;">
+<div id="completed" class="projects-grid" style="display: none;">
   <div class="card" onclick="showDetails('Posture Tracking Device', 'A Wemos ESP8266 based system designed to track back posture and give alerts when posture is incorrect.')">
     <img src="images/posture-tracker.jpg" alt="Posture Tracking Device">
     <h4>Posture Tracking Device</h4>
@@ -278,7 +376,52 @@
 
 
 
-  </section>
+<section id="certificates">
+  <h2>🎓 My Certificates</h2>
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-info">
+        <strong>🏅 Best In Thesis</strong>
+        <p>Finished our college thesis awarded with best in thesis</p>
+      </div>
+      <!-- <a href="images/cert-iot.jpg" target="_blank" title="View certificate">📄 View</a> -->
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-info">
+        <strong>🎖 Mechatronics Servicing NC III</strong>
+        <p>NCIII in HRDC-TESDA for Mechatronics Servicing (PLC + HMI)</p>
+      </div>
+      <!-- <a href="images/cert-arduino.jpg" target="_blank">📄 View</a> -->
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-info">
+        <strong>🌐 Internet of Things Bootcamp</strong>
+        <p>International Bootcamp for IoT Applications and Embedded Systems</p>
+      </div>
+      <!-- <a href="images/cert-research.jpg" target="_blank">📄 View</a> -->
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-info">
+        <strong>🐍 Python Programming 101</strong>
+        <p>Beginner-level participation in essential Python programming course</p>
+      </div>
+      <!-- <a href="images/cert-embedded.jpg" target="_blank">📄 View</a> -->
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-info">
+        <strong>🔧 PCB Design with Proteus (Udemy)</strong>
+        <p>Completed modular PCB design course using Proteus on Udemy</p>
+      </div>
+      <!-- <a href="images/cert-embedded.jpg" target="_blank">📄 View</a> -->
+    </div>
+  </div>
+</section>
+
+
 
   <section id="contact">
     <h2>Contact Me</h2>
